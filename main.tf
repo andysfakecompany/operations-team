@@ -55,7 +55,7 @@ resource "aws_instance" "jenkins-server" {
   connection {
         user = "centos"
         type = "ssh"
-        private_key = "${file("/Users/andy/.ssh/ajames_aws")}"
+        private_key = "${data.tfe_ssh_key.ajames-aws}"
         timeout = "2m"
   }
   provisioner "file" {
@@ -84,7 +84,7 @@ resource "aws_instance" "vault-server" {
   connection {
         user = "centos"
         type = "ssh"
-        private_key = "${file("/Users/andy/.ssh/ajames_aws")}"
+        private_key = "${data.tfe_ssh_key.ajames-aws}"
         timeout = "2m"
   }
   provisioner "file" {
