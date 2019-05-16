@@ -46,11 +46,6 @@ data "terraform_remote_state" "security_stuff" {
   }
 }
 
-data "tfe_ssh_key" "andykey" {
-  name         = "ajames-aws"
-  organization = "andys-fake-company"
-}
-
 resource "aws_instance" "jenkins-server" {
   ami           = "${data.aws_ami.centos.id}"
   instance_type = "t3.small"
