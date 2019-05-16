@@ -46,6 +46,10 @@ data "terraform_remote_state" "security_stuff" {
   }
 }
 
+data "tfe_ssh_key" "andykey" {
+  name         = "ajames-aws"
+  organization = "andys-fake-company"
+}
 
 resource "aws_instance" "jenkins-server" {
   ami           = "${data.aws_ami.centos.id}"
@@ -56,7 +60,7 @@ resource "aws_instance" "jenkins-server" {
   connection {
         user = "centos"
         type = "ssh"
-        private_key = "${data.tfe_ssh_key.ajames-aws.key}"
+        private_key = "${data.tfe_ssh_key.andykey.name}"
         timeout = "2m"
   }
   provisioner "file" {
@@ -86,7 +90,7 @@ resource "aws_instance" "vault-server" {
   connection {
         user = "centos"
         type = "ssh"
-        private_key = "${data.tfe_ssh_key.ajames-aws.key}"
+        private_key = "${data.tfe_ssh_key.andykey.name}"
         timeout = "2m"
   }
   provisioner "file" {
