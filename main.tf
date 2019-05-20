@@ -56,6 +56,7 @@ resource "aws_instance" "jenkins-server" {
   key_name = "ajames-key"
   vpc_security_group_ids = ["${data.terraform_remote_state.security_stuff.fakecompany_sharedservices_security_group_id}"]
   subnet_id = "${data.terraform_remote_state.networking_stuff.fakecompany_subnet_1}"
+  associate_public_ip_address = "true"
   connection {
         user = "centos"
         type = "ssh"
@@ -86,6 +87,7 @@ resource "aws_instance" "vault-server" {
   key_name = "ajames-key"
   vpc_security_group_ids = ["${data.terraform_remote_state.security_stuff.fakecompany_sharedservices_security_group_id}"]
   subnet_id = "${data.terraform_remote_state.networking_stuff.fakecompany_subnet_1}"
+  associate_public_ip_address = "true"
   connection {
         user = "centos"
         type = "ssh"
