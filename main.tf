@@ -1,5 +1,5 @@
 varible "ajames-aws-ssh" {
-  type = string
+  type = "string"
 }
 
 provider "aws" {
