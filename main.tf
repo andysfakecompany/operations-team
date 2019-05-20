@@ -1,4 +1,4 @@
-varible "ajames-aws-ssh" {
+variable "ajames-aws-ssh" {
   type = "string"
 }
 
