@@ -1,3 +1,7 @@
+varible "ajames-aws-ssh" {
+  type = string
+}
+
 provider "aws" {
   region = "us-east-2"
 }
